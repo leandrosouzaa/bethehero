@@ -1,8 +1,11 @@
 const express = require('express');
+const routes = require('./routes')
 
 const app = express();
 
 app.use(express.json())
+
+app.use(routes);
 
 /**
  * Rota / Recurso
@@ -31,13 +34,5 @@ app.use(express.json())
    * 
    * Request Body (req.body): Corpo da requisição, utilizado para criar ou alterar informações.
    */
-
-
-app.get('/', (req, res) => {
-    return res.json({
-        evento: 'Semana Omnistack 11.0',
-        aluno: 'Leandro Ribeiro de Souza'
-    });
-})
 
 app.listen(3333);
