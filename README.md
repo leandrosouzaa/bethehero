@@ -1,2 +1,2 @@
 # bethehero
-semana omnistack 11
+Projeto desenvolvido durante a 11ª Semana Omnistack
