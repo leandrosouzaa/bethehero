@@ -1,10 +1,23 @@
 import React from 'react';
-import { View, Text } from 'react-native'
+import { View, Text, Image } from 'react-native'
+
+import styles from './styles'
+import logoImg from '../../assets/logo.png'
 
 export default function Incidents() {
   return (
-    <View>
-      <Text>Incident</Text>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Image source={logoImg} />
+        <Text style={styles.headerText}>
+          Total de <Text style={styles.headerTextBold}>0 Casos</Text>
+        </Text>
+      </View>
+
+      <Text style={styles.title}>Bem Vindx!</Text>
+      <Text style={styles.description}>
+        Escolha um dos casos abaixo e salve o dia!
+      </Text>
     </View>
   )
 
