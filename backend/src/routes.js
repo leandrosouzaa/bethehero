@@ -1,4 +1,7 @@
 const express = require('express');
+const { celebrate, Segments, Joi } = require('celebrate')
+
+
 const OngController = require('./controllers/OngController');
 const IncidentController = require('./controllers/IncidentController');
 const ProfileController = require('./controllers/ProfileController');
@@ -12,7 +15,15 @@ routes.post('/sessions', SessionController.create);
 
 
 routes.get('/ongs', OngController.index);
-routes.post('/ongs', OngController.store);
+routes.post('/ongs', celebrate({
+  [Segments.BODY]: Joi.object.keys({
+    name: Joi.string().required(),
+    email: Joi.string().required().email(),
+    whatsapp: Joi.number().required().min(11),
+    city: Joi.required(),
+    uf: Joi.required().length(2),
+  })
+}), OngController.store);
 
 routes.post('/incidents', IncidentController.store);
 routes.get('/incidents', IncidentController.index);
