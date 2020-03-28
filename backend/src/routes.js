@@ -26,7 +26,11 @@ routes.post('/ongs', celebrate({
 }), OngController.store);
 
 routes.post('/incidents', IncidentController.store);
-routes.get('/incidents', IncidentController.index);
+routes.get('/incidents', celebrate({
+  [Segments.QUERY]: Joi.object().keys({
+    page: Joi.number()
+  })
+}), IncidentController.index);
 routes.delete('/incidents/:id', celebrate({
   [Segments.PARAMS]: Joi.object().keys({
     id: Joi.required().number()
