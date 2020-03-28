@@ -27,7 +27,12 @@ routes.post('/ongs', celebrate({
 
 routes.post('/incidents', IncidentController.store);
 routes.get('/incidents', IncidentController.index);
-routes.delete('/incidents/:id', IncidentController.delete)
+routes.delete('/incidents/:id', celebrate({
+  [Segments.PARAMS]: Joi.object().keys({
+    id: Joi.required().number()
+  })
+}), IncidentController.delete)
+
 routes.get('/profile', celebrate({
   [Segments.HEADERS]: Joi.object().keys({
     authorization: Joi.string().required
