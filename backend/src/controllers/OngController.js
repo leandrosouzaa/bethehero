@@ -1,5 +1,5 @@
 const connection = require('../database/connection');
-const crypto = require('crypto')
+const createId = require('../utils/createid')
 
 
 module.exports = {
@@ -13,9 +13,7 @@ module.exports = {
    async store(req, res) {
       const { name, email, whatsapp, city, uf } = req.body;
 
-      let id = crypto.randomBytes(2).toString('HEX');
-
-      id = `${name.toLowerCase()}-${id}`
+      const id = createId(name)
 
       await connection('ongs').insert({
          id,
