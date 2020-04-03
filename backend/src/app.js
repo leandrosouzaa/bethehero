@@ -38,4 +38,5 @@ app.use(routes);
  * Request Body (req.body): Corpo da requisição, utilizado para criar ou alterar informações.
  */
 
-app.listen(3333);
+
+module.exports = app;
